@@ -34,7 +34,7 @@ public class Candidate {
     @NotNull
     @NotBlank
     @Column(name = "nationality_number")
-    private String nationalityNumber;
+    private long nationalityNumber;
 
     @NotNull
     @NotBlank

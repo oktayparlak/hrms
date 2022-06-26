@@ -4,12 +4,11 @@ import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concretes.people.Candidate;
 
+import java.rmi.RemoteException;
 import java.util.List;
 
 public interface CandidateService {
     DataResult<List<Candidate>> getAll();
-    Result add(Candidate candidate);
-
-    boolean checkMernis(String name, String lastName, long nationalityNumber, int birthDate);
+    Result add(Candidate candidate) throws RemoteException;
 
 }
