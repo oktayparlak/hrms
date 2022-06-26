@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface CandidateService {
     DataResult<List<Candidate>> getAll();
-    Result add(Candidate candidate) throws RemoteException;
+    Result add(Candidate candidate);
 
 }
