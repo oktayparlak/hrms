@@ -34,7 +34,4 @@ public class Employer {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "password_again")
-    private String passwordAgain;
-
 }

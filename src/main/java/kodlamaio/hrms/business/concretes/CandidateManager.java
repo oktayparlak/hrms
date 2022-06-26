@@ -5,6 +5,7 @@ import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
+import kodlamaio.hrms.core.utilities.verifications.mernis.tr.gov.nvi.tckimlik.WS.KPSPublicSoapProxy;
 import kodlamaio.hrms.dataAccess.abstracts.CandidateDao;
 import kodlamaio.hrms.entities.concretes.people.Candidate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,17 @@ public class CandidateManager implements CandidateService {
     public Result add(Candidate candidate) {
         this.candidateDao.save(candidate);
         return new SuccessResult("Aday eklendi!");
+    }
+
+    @Override
+    public boolean checkMernis(String name, String lastName, long nationalityNumber, int birthDate) {
+        KPSPublicSoapProxy kpsPublicSoapProxy = new KPSPublicSoapProxy();
+        boolean result;
+        try {
+            result = kpsPublicSoapProxy.TCKimlikNoDogrula(nationalityNumber, name, lastName, birthDate);
+        } catch (Exception e) {
+            return false;
+        }
+        return result;
     }
 }
